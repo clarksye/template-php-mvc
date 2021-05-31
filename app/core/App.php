@@ -11,12 +11,11 @@ class App{
     public function __construct() 
     {
         $url = $this->parseURL();
-        $url[0] = ucfirst($url[0]);
         
         // controller
-        if( file_exists('app/controllers/' . $url[0] . '.php'))
+        if( file_exists('app/controllers/' . ucfirst($url[0]) . '.php'))
         {
-            $this->controller = $url[0];
+            $this->controller = ucfirst($url[0]);
             unset($url[0]);
         }
 
@@ -27,8 +26,6 @@ class App{
         //method
         if( isset($url[1]))
         {
-            $url[1] = strtolower($url[1]);
-
             if( method_exists($this->controller, $url[1]))
             {
                 $this->method = $url[1];

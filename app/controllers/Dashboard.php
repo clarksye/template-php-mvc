@@ -2,13 +2,12 @@
 use app\core\Controller as Controller;
 
 class Dashboard extends Controller {
-    public function index()
+    public function index($url1 = "")
     {
-        $this->view('dashboard/index');
-    }
-
-    public function setting()
-    {
-        echo "Dashboard/setting";
+        $data['pageName'] = "Dashboard";
+        $data['url1'] = $url1;
+        $this->view('templates/header', $data);
+        $this->view('dashboard/index', $data);
+        $this->view('templates/footer');
     }
 }
