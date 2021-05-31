@@ -2,7 +2,8 @@
 
 
 class Controller {
-    public function __construct() {
-        echo "ok";
+    public function view($view, $data = array())
+    {
+        require_once 'app/views/' . $view . '.php';
     }
 }
